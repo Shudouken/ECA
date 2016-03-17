@@ -1,0 +1,78 @@
+\documentclass[12pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[pdfusetitle]{hyperref}
+\usepackage{graphicx}
+\usepackage{calc}
+\usepackage{fancyhdr,multicol,multirow,paralist,graphicx,array,enumitem}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\addto\captionsngerman{
+  \renewcommand{\contentsname}
+    {Index}
+}
+\KOMAoptions{parskip=half+,paper=a4,twocolumn=false,DIV=12}
+\fancypagestyle{eca-style}{
+\fancyhf{}
+\fancyhead[L]{ECA Summary}
+\fancyhead[R]{\thesection}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}}
+\fancypagestyle{index-style}{
+\fancyhf{}
+\fancyhead[L]{ECA Summary}
+\fancyhead[R]{Index}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}}
+\setdescription{itemsep=0pt}
+\makeatletter
+\newenvironment{minipagespace}{
+\begin{minipage}
+}{
+\end{minipage}
+\vspace{10pt}
+}
+\makeatother
+%\setenumerate{nosep}
+\setcounter{tocdepth}{3}
+\title{ECA Summary}
+\date{2016}
+\begin{document}
+
+%\pagestyle{index-style}
+%\tableofcontents{}
+%\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{eca-style}
+
+\section{Enumerating vs. Counting}
+
+\subsection{Permutation of Letters}
+
+{\bf Example:} How many words can we make out of the letters A B C using each letter once?
+
+\begin{itemize}
+\item ABC
+\item ACB
+\item BAC
+\item BCA
+\item CAB
+\item CBA
+\end{itemize}
+
+When we list all objects as above we call it {\bf enumeration}, whereas {\bf counting} is only concerned with the total number of objects. If we consider the example above, how many words would be possible for A B C D?
+
+It's best to find a formula, as using it is a very efficient way to count Objects. For $n = 4$ letters we end up with $24$ permutations.
+
+The formula for the amount of different words with $n$ letters is $n!$
+
+\subsection{Points in Convex Position}
+
+
+
+\end{document}
