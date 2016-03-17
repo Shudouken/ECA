@@ -1,17 +1,16 @@
 \documentclass[12pt]{scrartcl}
 \usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel}
+\usepackage[english,ngerman]{babel}
 \usepackage[pdfusetitle]{hyperref}
 \usepackage{graphicx}
 \usepackage{calc}
+\usepackage{caption}
 \usepackage{fancyhdr,multicol,multirow,paralist,graphicx,array,enumitem}
 \usepackage{amsmath}
+\usepackage{float}
 \usepackage{color}
 \usepackage[dvipsnames]{xcolor}
-\addto\captionsngerman{
-  \renewcommand{\contentsname}
-    {Index}
-}
+\addto\captionsngerman{\renewcommand{\figurename}{Figure}}
 \KOMAoptions{parskip=half+,paper=a4,twocolumn=false,DIV=12}
 \fancypagestyle{eca-style}{
 \fancyhf{}
@@ -25,6 +24,7 @@
 \fancyhead[L]{ECA Summary}
 \fancyhead[R]{Index}
 \fancyfoot[C]{\thepage}
+\captionsetup{width=0.5\textwidth}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}}
 \setdescription{itemsep=0pt}
@@ -40,6 +40,22 @@
 \setcounter{tocdepth}{3}
 \title{ECA Summary}
 \date{2016}
+
+\newcommand{\img}[3]{
+\begin{figure}[H]
+	\centering
+	\includegraphics[#2]{img/#1}
+	\captionsetup{width=0.8\textwidth, justification=centering}
+	\caption{#3}
+\end{figure}
+}
+
+\newcommand{\eq}[1]{
+\begin{equation*}
+#1
+\end{equation*}
+}
+
 \begin{document}
 
 %\pagestyle{index-style}
@@ -78,6 +94,34 @@ The formula for the amount of different words with $n$ letters is $n!$
 
 \subsection{Points in Convex Position}
 
+How many crossing-free spanning paths exist for $n$ points on convex position?
 
+\img{crossing_free_spanning_path}
+    {scale=1.5, trim=220 550 430 125}
+    {An example illustrating one possibility of a spanning path for $n=9$ points}
+
+For $n=1$ points the definition of the spanning path is unclear, in some cases it is considered as path with the size $1$ and in others with size $0$.
+
+Let's look at some examples for $n > 1$ and try to determine a suitable formula. 
+
+\img{crossing_free_spanning_path_enumeration}
+    {scale=1, trim=270 340 200 125}
+    {Enumeration of crossing free spanning paths up to $n=4$}
+
+As we can see from this example, enumeration can become a tedious and error prone task very fast. Can you list all paths for $n=5$?
+
+It is better to abstract the problem and find an inductive solution. When constructing the path we start with a point, and from it we only see two immediate choices. After one of those points is added, we have two choices again. This goes on for a while until $n-2$.
+
+\eq{\underbrace{2 \cdot 2 \cdot 2 \cdots 2 \cdot 2}_{n-2 \text{ times}} = 2^{n-2}}
+
+Now in order to construct all paths we need to start at all possible points, when we do that however a double count occurs.
+
+\eq{n \cdot 2^{n-2} \Rightarrow \frac{n \cdot 2^{n-2}}{2} \Rightarrow n \cdot 2^{n-3} \text{ for } n \ge 2 }
+
+We can use this formula to find the number of crossing-free spanning paths for $n=5$, which gives us $5 \cdot 2^2 = 20$.
+
+\img{crossing_free_spanning_path_n_5}
+    {scale=1, trim=200 425 200 125}
+    {Another method of enumeration, do not list similar objects}
 
 \end{document}

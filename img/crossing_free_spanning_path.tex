@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{tkz-graph}
+\usetikzlibrary{patterns}
+\pagestyle{empty}
+\begin{document}
+\begin{tikzpicture}
+
+%\GraphInit[vstyle=Classic]
+\GraphInit[vstyle=Simple]
+
+\SetUpEdge[lw = 1.1pt, color = red]
+\tikzset{VertexStyle/.append style = {minimum size = 8pt, inner sep = 0pt, fill=white}}    
+
+\Vertices[unit=2]{circle}{1,2,3,4,5,6,7,8,9}
+
+% It's easy to change the color of a vertex!
+% \AddVertexColor{green}{1,2} 
+\Edges(2,3,4,1,5,9,6,8,7)
+
+\end{tikzpicture}
+\end{document}
