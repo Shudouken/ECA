@@ -4,23 +4,6 @@
 \pagestyle{empty}
 \usetikzlibrary{patterns}
 
-\newcommand{\align}[1]{
-	\begingroup
-	\setbox0=\hbox{#1}
-	\parbox{\wd0}{\box0}\endgroup
-}
-
-\newcommand{\graph}[2]{
-	\begin{tikzpicture}[scale=0.66]
-	\GraphInit[vstyle=Simple]
-	\SetUpEdge[lw = 1.1pt, color = red]
-	\tikzset{VertexStyle/.append style = {minimum size = 8pt, inner sep = 0pt, fill=white}}    
-	\Vertices[unit=2]{circle}{#1}
-	\Edges(#2)
-	\end{tikzpicture}
-}
-
-
 \begin{document}
 
 \begin{tikzpicture}

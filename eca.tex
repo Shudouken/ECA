@@ -1,28 +1,30 @@
-\documentclass[12pt]{scrartcl}
+\documentclass[12pt,onecolumn%,twoside
+]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[english,ngerman]{babel}
 \usepackage[pdfusetitle]{hyperref}
 \usepackage{graphicx}
 \usepackage{calc}
 \usepackage{caption}
-\usepackage{fancyhdr,multicol,multirow,paralist,graphicx,array,enumitem}
-\usepackage{amsmath}
+\usepackage{fancyhdr,multicol,multirow,bigdelim,paralist,graphicx,array,enumitem}
+\usepackage{amsmath, mathtools}
 \usepackage{float}
 \usepackage{color}
 \usepackage[dvipsnames]{xcolor}
 \renewcommand{\sectionmark}[1]{\markboth{#1}{}}
 \addto\captionsngerman{\renewcommand{\figurename}{Figure}}
+\addto\captionsngerman{\renewcommand{\contentsname}{Index}}
 \KOMAoptions{parskip=half+,paper=a4,twocolumn=false,DIV=12}
 \fancypagestyle{eca-style}{
 \fancyhf{}
-\fancyhead[L]{ECA Summary}
+\fancyhead[L]{ECA}
 \fancyhead[R]{\leftmark}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}}
 \fancypagestyle{index-style}{
 \fancyhf{}
-\fancyhead[L]{ECA Summary}
+\fancyhead[L]{ECA}
 \fancyhead[R]{Index}
 \fancyfoot[C]{\thepage}
 \captionsetup{width=0.5\textwidth}
@@ -37,10 +39,12 @@
 \vspace{10pt}
 }
 \makeatother
-%\setenumerate{nosep}
 \setcounter{tocdepth}{3}
-\title{ECA Summary}
+\title{Enumerative Combinatoric Algorithms (716.035)}
 \date{2016}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
 \newcommand{\img}[3]{
 \begin{figure}[H]
@@ -62,21 +66,32 @@
 
 \newcommand{\eq}[1]{
 \begin{equation*}
+\begin{aligned}
 #1
+\end{aligned}
 \end{equation*}
+}
+
+\newcommand{\newsection}[1]{
+\cleardoublepage
+\section{#1}
 }
 
 \begin{document}
 
-%\pagestyle{index-style}
-%\tableofcontents{}
-%\newpage
+\begin{titlepage}
+\maketitle
+\newpage
+\pagestyle{index-style}
+\tableofcontents{}
+\newpage
+\end{titlepage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \pagestyle{eca-style}
 
-\section{Enumerating vs. Counting}
+\newsection{Enumerating vs. Counting}
 
 \subsection{Permutation of Letters}
 
@@ -134,8 +149,7 @@ We can use this formula to find the number of crossing-free spanning paths for $
     {scale=1, trim=200 425 200 125}
     {Another method of enumeration, do not explicitly list similar objects}
     
-\newpage
-\section{Polyominos}
+\newsection{Polyominos}
 
 \img{polyominos}
 	{scale=1, trim=225 555 200 125}
@@ -198,8 +212,132 @@ No formula is known for the number of fixed/free polyominos.
 
 The number of polyominos goes to $\Theta(c^n)$ and we know that $4.00253 \le c \le 4.65$.
 
+\newsection{Pigeonhole-Principle}
+
+Also known as Dirichlet principle, or in German $"$Schuhfach prinzip$"$.
+
+If you have $n+1$ elements (pigeons) which you put into $n$ boxes (pigeonholes), then there is a box with at least two elements (two pigeons).
+
+{\bf General form}: If you have $k$ elements which you put into n boxes, then there is a box with at least $\ceil*{\frac{k}{n}}$ and one with at most $\floor*{\frac{k}{n}}$ elements.
+
+\subsection{Example 1: Socks}
+
+You have $n$ black socks and $m$ white socks in a drawer. How many socks do you have to pick out in order to get a matching pair?
+
+If you abstract the problem using the pigeonhole principle it leads to the following setup. In total there are $n+m$ elements that are distributed upon two boxes, one for white socks and one for black socks. If we pick a sock out of the drawer and put it into one of the two boxes, we have to repeat the process at least three times to have a box with two elements in them (a matching pair of socks).
+
+For $n=2$ boxes there have to be $n+1=3$ elements, such that one of the boxes contains at least $\ceil*{\frac{3}{2}} = 2$ elements.
+
+\subsection{Example 2: Numbers}
+
+Let $S$ be a subset of $\{1,2,\cdots, 2n\}$ of cardinality $n+1$. Prove or give a counter example for: $S$ contains two numbers $a$ and $b$ such that
+\begin{itemize}
+\item $a+b = 2n + 1$
+\item $a-b = n$
+\end{itemize}
+
+To solve this problem we have to think of appropriate labels for the boxes.
+
+\begin{center}
+\begin{tabular}{l  l}
+  $\{1,2n\}$ & \rdelim\}{5}{1mm}[ $n$ boxes]\\
+  $\{2,2n-1\}$ & \\
+  $\{3,2n-3\}$ & \\
+  $\qquad\vdots$ & \\
+  $\{n,n+1\}$ &  
+\end{tabular}
+\end{center}
+
+There is a subset of cardinality $n+1$, so taking a number and putting it into the box with its name on the label, there has to be at least one box with two elements, thus adding up to $2n+1$.
+
 \newpage
 
-\section{Pigeonhole-Principle}
+Similarly, solve the second problem by using different labels
+\begin{center}
+\begin{tabular}{l  l}
+  $\{1,n+1\}$ & \rdelim\}{5}{1mm}[ $n$ boxes]\\
+  $\{2,n+2\}$ & \\
+  $\{3,n+3\}$ & \\
+  $\qquad\vdots$ & \\
+  $\{n,\underbrace{n+n}_{2n}\}$ &  
+\end{tabular}
+\end{center}
+
+\subsection{Example 3: Hairs}
+
+Prove: In Austria there exist at least eight people with the same number of hairs on their head.
+
+Facts:
+\begin{itemize}
+\item On average people have $150.000$ hairs
+\item It is save to assume that the range is $0-1.000.000$
+\item Population of Austria: $8.699.730$ (Jan 1$^{st}$ 2016)
+\end{itemize}
+
+Take the total range of hairs as boxes, leading to $1.000.001$ boxes. At least $\ceil*{\frac{8699730}{1000001}} \sim \ceil*{8,7} = 9$ people have the same number of hairs on their head in Austria.
+
+\subsection{Example 4: Party}
+
+At a party $n \ge 2$ people meet. Some shake hands with others and some don't. Show or provide a counter example:
+\begin{itemize}
+\item There are at least two people at this party shaking the same number of hands.
+\end{itemize}
+
+There are two cases to consider for the boxes.
+
+\begin{enumerate}
+\item No one shakes zero hands.
+
+\begin{tabular}{l  l}
+  \multicolumn{2}{c}{\# handshakes} \\
+  $1$ & \rdelim\}{5}{1mm}[ $n-1$ boxes]\\
+  $2$ & \\
+  $3$ & \\
+  $\vdots$ & \\
+  $n-1$ &  
+\end{tabular}
+\item At least one person shakes zero hands
+
+\begin{tabular}{l  l}
+  \multicolumn{2}{c}{\# handshakes} \\
+  $0$ & \rdelim\}{5}{1mm}[ $n-1$ boxes]\\
+  $1$ & \\
+  $2$ & \\
+  $\vdots$ & \\
+  $n-2$ &  
+\end{tabular}
+\end{enumerate}
+
+In both cases we have $n-1$ boxes for $n$ elements, meaning there always has to be a box with at least two elements.
+
+\subsection{Example 5: Numers II}
+
+Let $q$ be an odd number and let $S$ be the set $\{1,3,7,15,31, \cdots , 2^i-1\}$, i.e. $S$ contains the elements $a_i = 2^i-1$ for all $i \ge 1$.
+
+{\bf Claim}: For each odd number $q$ there exists an $a_i$ which is a multiple of $q$ ($q$ divides $a_i$ without rest)
+
+\eq{a_i = c \cdot q + r_i \qquad r_i \text{ has to be zero}}
+
+Boxes for the rest:
+
+\begin{tabular}{l  l}
+  $\{r_i = 0\}$ & \rdelim\}{5}{1mm}[ $q$ boxes]\\
+  $\{r_i = 1\}$ & \\
+  $\{r_i = 2\}$ & \\
+  $\qquad \vdots$ & \\
+  $\{r_i = q-2\}$ &  
+\end{tabular}
+
+We can ignore the case with at least one element in box $\{r_i = 0\}$, since it means we are done already. If we ignore that box, there have to be two boxes with the same rest.
+
+\eq{
+	 		& a_m = c^* \cdot q + r_m \\
+	- \quad & \underline{a_m = c^{**} \cdot q + r_m} \\
+	 		& a_m - a_n = c^{***} \cdot q \qquad m > n \\
+	 		& a_m - a_n = 2^m-1-(2^n-1) = \\
+	 		& 2^m-2^n = 2^n\underbrace{(2^{m-n}-1)}_{a_{m-n}}
+}
+
+$a_{m-n}$ must be a multiple of $q$.
 
 \end{document}

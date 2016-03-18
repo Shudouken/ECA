@@ -1,2 +1,2 @@
-# ECA
-ECA Summary
+# Enumerative Combinatoric Algorithms
+ECA lecture notes
