@@ -113,7 +113,7 @@
 
 When we list all objects as above we call it {\bf enumeration}, whereas {\bf counting} is only concerned with the total number of objects. If we consider the example above, how many words would be possible for A B C D?
 
-It's best to find a formula, as using it is a very efficient way to count Objects. For $n = 4$ letters we end up with $24$ permutations.
+It's best to find a formula, as using it is a very efficient way to count objects. For $n = 4$ letters we end up with $24$ permutations.
 
 The formula for the amount of different words with $n$ letters is $n!$
 
@@ -143,7 +143,7 @@ Now in order to construct all paths we need to start at all possible points, whe
 
 \eq{n \cdot 2^{n-2} \Rightarrow \frac{n \cdot 2^{n-2}}{2} \Rightarrow n \cdot 2^{n-3} \text{ for } n \ge 2 }
 
-We can use this formula to find the number of crossing-free spanning paths for $n=5$, which gives us $5 \cdot 2^2 = 20$.
+We can use this formula to find the number of crossing-free spanning paths for $n=5$, which gives us $5 \cdot 2^2 = 20$ paths.
 
 \img{crossing_free_spanning_path_n_5}
     {scale=1, trim=200 425 200 125}
@@ -214,7 +214,7 @@ The number of polyominos goes to $\Theta(c^n)$ and we know that $4.00253 \le c \
 
 \newsection{Pigeonhole-Principle}
 
-Also known as Dirichlet principle, or in German $"$Schuhfach prinzip$"$.
+Also known as Dirichlet principle, or in German $"$Schuhfach Prinzip$"$.
 
 If you have $n+1$ elements (pigeons) which you put into $n$ boxes (pigeonholes), then there is a box with at least two elements (two pigeons).
 
@@ -241,7 +241,7 @@ To solve this problem we have to think of appropriate labels for the boxes.
 \begin{center}
 \begin{tabular}{l  l}
   $\{1,2n\}$ & \rdelim\}{5}{1mm}[ $n$ boxes]\\
-  $\{2,2n-1\}$ & \\
+  $\{2,2n-2\}$ & \\
   $\{3,2n-3\}$ & \\
   $\qquad\vdots$ & \\
   $\{n,n+1\}$ &  
