@@ -10,12 +10,13 @@
 \usepackage{float}
 \usepackage{color}
 \usepackage[dvipsnames]{xcolor}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
 \addto\captionsngerman{\renewcommand{\figurename}{Figure}}
 \KOMAoptions{parskip=half+,paper=a4,twocolumn=false,DIV=12}
 \fancypagestyle{eca-style}{
 \fancyhf{}
 \fancyhead[L]{ECA Summary}
-\fancyhead[R]{\thesection}
+\fancyhead[R]{\leftmark}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}}
@@ -50,6 +51,15 @@
 \end{figure}
 }
 
+\newcommand{\fig}[2]{
+\begin{figure}[H]
+	\centering
+	#1
+	\captionsetup{width=0.8\textwidth, justification=centering}
+	\caption{#2}
+\end{figure}
+}
+
 \newcommand{\eq}[1]{
 \begin{equation*}
 #1
@@ -74,15 +84,15 @@
 
 \begin{center}
 \begin{inparaitem}
-\item ABC \qquad
-\item BAC \qquad
-\item CAB
+	\item ABC \qquad
+	\item BAC \qquad
+	\item CAB
 \end{inparaitem}
 
 \begin{inparaitem}
-\item ACB \qquad
-\item BCA \qquad
-\item CBA
+	\item ACB \qquad
+	\item BCA \qquad
+	\item CBA
 \end{inparaitem}
 \end{center}
 
@@ -122,6 +132,74 @@ We can use this formula to find the number of crossing-free spanning paths for $
 
 \img{crossing_free_spanning_path_n_5}
     {scale=1, trim=200 425 200 125}
-    {Another method of enumeration, do not list similar objects}
+    {Another method of enumeration, do not explicitly list similar objects}
+    
+\newpage
+\section{Polyominos}
+
+\img{polyominos}
+	{scale=1, trim=225 555 200 125}
+	{A polyomino of size $n$ consists of $n$ unit squares connected via edges, aligned on a grid}
+	
+\img{polyominos_holes}
+	{scale=1, trim=235 505 360 140}
+	{A polyomino with a hole inside. Polyominos without holes are a special case and they are called animals.}	
+	
+How many n-polyominos do exist? We have to define how to count them, that means defining the parameters that decide when two polyominos are regarded as one and the same. Polyominos can be compared using three operations:
+\begin{enumerate}
+	\item {\bf Translation}: Move one polyomino on top of another, if they overlap, they are the same.
+	\item {\bf Rotation}: Additionally rotate one polyomino, if there is one rotation that makes them overlap, they are the same.
+	\item {\bf Reflection}: Move in the 3$^{rd}$ dimension, mirroring the polyomino.
+\end{enumerate}
+
+With these operations polyominos can be classified into these two groups: 
+\begin{itemize}
+	\item {\bf Fixed polyominos}: Only translation is allowed.
+	\item {\bf Free polyominos}: Translation, rotation and reflection is allowed.	
+\end{itemize}
+
+\fig{
+\begin{tabular}{| r | c | c |}
+  \hline
+  n & \# fixed & \# free \\
+  \hline	
+  1 & 1 & 1 \\
+  2 & 2 & 1 \\
+  3 & 6 & 2 \\
+  4 & 19 & 5 \\
+  5 & 63 & 12 \\
+  \vdots & \vdots & \vdots 
+\end{tabular}}{How many n-polyominos do exist?}
+
+What is the formula for generating \underline{all} n-polyominos? Look at a step from $n \to n+1$, we can add one unit square to all surfaces, in the absolute worst case (a straight polyomino) that means $2n+2$ possibilities. How can we best deal with duplicates?
+
+{\bf Approach 1}: Generate all new polyominos, then compare them all. For size $n+1$, $k$ polyominos are generated. $\Rightarrow O((_2^k) \cdot n) = O(k^2 \cdot n)$ 
+
+Problem: $k >> n$
+
+{\bf Approach 2}: Fingerprinting. Build a vector of a polyomino that is given by the coordinates of the squares.
+
+\img{polyominos_vector}
+	{scale=1, trim=275 505 360 125}
+	{Polynomios and their respective vector fingerprint.}
+	
+Compute all eight polyonimos (4x rotation \& 2x reflection) and take the lexicographical minimum of the vector form!
+
+Time for the fingerprint: $O(n)$
+
+$\Rightarrow$ Compute fingerprints of all generated polyominos: $O(k \cdot n)$
+
+$\Rightarrow$ Sort all fingerprints: $O(k \cdot log(k) \cdot n)$, duplicates are neighboured in the sorting and removing takes $O(k \cdot n)$
+$\Rightarrow$ the total runtime is $O(k \cdot log(k) \cdot n)$
+
+No formula is known for the number of fixed/free polyominos.
+
+\eq{\lim\limits_{n \rightarrow \infty}\frac{\# (n+1) \text{ polyominos}}{\# n \text{ polyominos}} = \text{some constant } c}
+
+The number of polyominos goes to $\Theta(c^n)$ and we know that $4.00253 \le c \le 4.65$.
+
+\newpage
+
+\section{Pigeonhole-Principle}
 
 \end{document}
