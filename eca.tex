@@ -187,7 +187,7 @@ With these operations polyominos can be classified into these two groups:
 
 What is the formula for generating \underline{all} n-polyominos? Look at a step from $n \to n+1$, we can add one unit square to all surfaces, in the absolute worst case (a straight polyomino) that means $2n+2$ possibilities. How can we best deal with duplicates?
 
-{\bf Approach 1}: Generate all new polyominos, then compare them all. For size $n+1$, $k$ polyominos are generated. $\Rightarrow O((_2^k) \cdot n) = O(k^2 \cdot n)$ 
+{\bf Approach 1}: Generate all new polyominos, then compare them all. For size $n+1$, $k$ polyominos are generated. $\Rightarrow \mathcal{O}((_2^k) \cdot n) = \mathcal{O}(k^2 \cdot n)$ 
 
 Problem: $k >> n$
 
@@ -199,12 +199,12 @@ Problem: $k >> n$
 	
 Compute all eight polyonimos (4x rotation \& 2x reflection) and take the lexicographical minimum of the vector form!
 
-Time for the fingerprint: $O(n)$
+Time for the fingerprint: $\mathcal{O}(n)$
 
-$\Rightarrow$ Compute fingerprints of all generated polyominos: $O(k \cdot n)$
+$\Rightarrow$ Compute fingerprints of all generated polyominos: $\mathcal{O}(k \cdot n)$
 
-$\Rightarrow$ Sort all fingerprints: $O(k \cdot log(k) \cdot n)$, duplicates are neighboured in the sorting and removing takes $O(k \cdot n)$
-$\Rightarrow$ the total runtime is $O(k \cdot log(k) \cdot n)$
+$\Rightarrow$ Sort all fingerprints: $\mathcal{O}(k \cdot log(k) \cdot n)$, duplicates are neighboured in the sorting and removing takes $\mathcal{O}(k \cdot n)$
+$\Rightarrow$ the total runtime is $\mathcal{O}(k \cdot log(k) \cdot n)$
 
 No formula is known for the number of fixed/free polyominos.
 
