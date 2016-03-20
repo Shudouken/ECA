@@ -14,7 +14,7 @@
 	\begin{tikzpicture}[scale=0.66]
 	\GraphInit[vstyle=Simple]
 	\SetUpEdge[lw = 1.1pt, color = red]
-	\tikzset{VertexStyle/.append style = {minimum size = 8pt, inner sep = 0pt, fill=white}}    
+	\tikzset{VertexStyle/.append style = {minimum size = 8pt, inner sep = 0pt, fill=white}}
 	\Vertices[unit=2]{circle}{#1}
 	\Edges(#2)
 	\end{tikzpicture}
@@ -22,16 +22,16 @@
 
 \begin{document}
 
-\makebox[5cm]{{\bf 5x with no diagonal}}
+\makebox[5cm]{{\bf $\mathbf{5\times}$ with no diagonal}}
 \align{\graph{1,2,3,4,5}{1,2,3,4,5}}
 
-\makebox[5cm]{{\bf 2x5x with one diagonal}}
+\makebox[5cm]{{\bf $\mathbf{2\times5\times}$ with one diagonal}}
 \align{
 	\graph{1,2,3,4,5}{3,2,4)\SetUpEdge[lw = 1.1pt, color = blue]\Edges(4,5,1}
 	\graph{1,2,3,4,5}{5,1,2)\SetUpEdge[lw = 1.1pt, color = blue]\Edges(3,4,2}
 }
 
-\makebox[5cm]{{\bf 5x with two diagonals}}
+\makebox[5cm]{{\bf $\mathbf{5\times}$ with two diagonals}}
 \align{\graph{1,2,3,4,5}{3,4,2,5,1}}
 
 \end{document}
