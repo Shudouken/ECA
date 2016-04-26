@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{tkz-graph}
+\usepackage{paralist}
+\pagestyle{empty}
+\usetikzlibrary{patterns}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+\draw[thick,-] ( 0, 0) -- ( 0, 2);
+\draw[thick,-] ( 2, 0) -- ( 2, 2);
+
+\draw[thick,-] ( 0, 0) -- ( 2, 0);
+\draw[thick,-] ( 0, 0) -- ( 0,-2);
+\draw[thick,-] ( 2, 0) -- ( 2,-2);
+\draw[thick,-] ( 0,-2) -- ( 2,-2);
+
+\draw[thick,-] ( 0,-2) -- ( 2,-2);
+\draw[thick,-] ( 0,-2) -- ( 0,-4);
+\draw[thick,-] ( 2,-2) -- ( 2,-4);
+\draw[thick,-] ( 0,-4) -- ( 2,-4);
+
+\draw[thick,-] ( 0,-4) -- ( 0,-6);
+\draw[thick,-] ( 2,-4) -- ( 2,-6);
+
+\end{tikzpicture}
+
+\end{document}
