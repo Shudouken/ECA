@@ -348,7 +348,6 @@ We can use the following equation to find a solution.
 \eq{X = 45 - |\{ \text{numbers which have at least one common divisor with 45} \}|}
 
 For that we need to take a look at the prime coefficients of $45$ which consist of $3 \cdot 3 \cdot 5$ and count the members of the set divisible by them.
-
 \eq{
 	X_i &= | \text{numbers of } \{1 \dots 45\} \text{ divisible by i} | \\
 	X_3 &= \frac{45}{3} = 15 \\
@@ -357,9 +356,25 @@ For that we need to take a look at the prime coefficients of $45$ which consist 
 }
 
 In the last line, we made preparations to ensure that no double count occurs. 
-
 \eq{
 	X &= 45 - X_3 - X_5 + X_{3 \cdot 5} = 45 - 15 - 9 + 3 = 24
 }
+
+{\bf Lemma}: For two sets $A,B$ we are interested in $|A \cup B|$
+\eq{|A \cup B| = |A| + |B| - |A \cap B|}
+
+{\bf Example 2}: How many numbers of the set $\{1 \dots 60\}$ are coprime with 60?
+\eq{
+	60 &= 2 \cdot 2 \cdot 3 \cdot 5 \\
+	X &= 60 - \underbrace{X_2}_{30} - \underbrace{X_3}_{20} - \underbrace{X_5}_{12} + \underbrace{X_6}_{10} + \underbrace{X_{10}}_{6} + \underbrace{X_{15}}_{4} - \underbrace{X_{30}}_{2} \\
+	X &= 16
+}
+
+{\bf Lemma}: For three sets $A,B,C$ we are interested in $|A \, \cup \, B \, \cup \, C|$
+\eq{|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|}
+
+%TODO insert full formula here
+
+\subsection{Spanning trees in ladders}
 
 \end{document}
