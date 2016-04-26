@@ -340,4 +340,26 @@ We can ignore the case with at least one element in box $\{r_i = 0\}$, since it 
 
 $a_{m-n}$ must be a multiple of $q$.
 
+\newsection{Inclusion-Exclusion}
+
+{\bf Example}: How many numbers of the set $\{1 \dots 45\}$ are coprime (do not have a common divisor) with 45?
+
+We can use the following equation to find a solution.
+\eq{X = 45 - |\{ \text{numbers which have at least one common divisor with 45} \}|}
+
+For that we need to take a look at the prime coefficients of $45$ which consist of $3 \cdot 3 \cdot 5$ and count the members of the set divisible by them.
+
+\eq{
+	X_i &= | \text{numbers of } \{1 \dots 45\} \text{ divisible by i} | \\
+	X_3 &= \frac{45}{3} = 15 \\
+	X_5 &= \frac{45}{15} = 9 \\
+	X_{3 \cdot 5} = X_{15} &= \frac{45}{15} = 3
+}
+
+In the last line, we made preparations to ensure that no double count occurs. 
+
+\eq{
+	X &= 45 - X_3 - X_5 + X_{3 \cdot 5} = 45 - 15 - 9 + 3 = 24
+}
+
 \end{document}
