@@ -91,6 +91,10 @@
 \section{#1}
 }
 
+\newcommand{\st}[4]{
+\boxed{\text{#1}}\boxed{\text{#2}}\boxed{\text{#3}}\boxed{\text{#4}}
+}
+
 \begin{document}
 
 \begin{titlepage}
@@ -476,7 +480,7 @@ aka Burnside's Lemma}
 
 \subsection{Objects and Operations}
 
-Set of \textbf{objects} X \\
+Set of \textbf{objects} $X$ \\
 Set of \textit{n} \textbf{operations} \textit{R} = $\{R_{i},0 \leq i \leq \textit{n} - 1 \}$
 
 R forms a group w.r.t. $\circ$ (4 axioms $\forall R_{i}, R_{j}):$  \\
@@ -487,7 +491,7 @@ Inverse element: $\exists R_{k} : R_{k} \circ R_{i} = R_{i} \circ R_{k} = R_{0}$
 
 \textbf{Objects} might be strings, colored grids, colored cubes, ... \\
 \textbf{Operations} might be rotations, reflections, ... \\
-For objects, $R_{0}$ is the identity (neutral) function. \\
+For objects, $R_{0}$ is the identity (neutral) function.
 
 \subsection{Orbits}
 An orbit is the set of all objects from $X$ which can be
@@ -516,10 +520,21 @@ by operation, right side counts by objects).
 Deriving a first relation { simplified version (not valid in full
 generality):\\
 $ \sum \limits_{x \in orbit} m_{x} = n $
-\begin{flushleft}
-\includegraphics[scale=0.8]{img/orbits}
-\end{flushleft}
-This leads to the formular: \\
+
+\noindent
+\includegraphics[scale=0.6, trim=170 460 125 150, clip]{img/orbit_left}
+\begin{minipage}[b]{0.33\textwidth}
+\centering
+Two times the same
+object: unify the vertices! \\
+For removed copy: remove
+outgoing edges, reroute
+incoming edges. \\
+We get one new stabilizer! $\rule{1cm}{0mm}$
+\end{minipage}
+\includegraphics[scale=0.6, trim=165 460 125 150, clip]{img/orbit_right}
+
+This leads to the formula: \\
 number of orbits = $\frac{\sum \limits_{x \in X} m_{x}}{n}$ \\
 With the previous observation $\sum \limits_{i = 0}^{n - 1} r_{i} = \sum \limits_{x \in X} m_{x}$
 we therefore get
@@ -532,25 +547,32 @@ numbers $m_{x}$ of stabilizers.
 
 \subsection{Examples}
 \subsubsection{Strings (1)}
-Consider strings of length 4 with characters ${A,B}$\\
+Consider strings of length 4 with characters $\{A,B\}$\\
 Operation: cyclic shift by $i$ positions, $0 \leq i \leq 3$. How many
 different strings exist?
 
-Algorithm: \\
-1. Identify $R_{0}$ to $R_{n-1}$ \\
-2. Compute all invariance numbers $ r_{i},0 \leq i \leq n - 1$ \\
-3. Compute the number of orbits $\frac{\sum \limits_{i = 0}^{n - 1} r_{i}}{n}$
+Algorithm:
+\begin{center}
+\begin{enumerate}
+\item Identify $R_{0}$ to $R_{n-1}$ \\
+\item Compute all invariance numbers $ r_{i},0 \leq i \leq n - 1$ \\
+\item Compute the number of orbits $\frac{\sum \limits_{i = 0}^{n - 1} r_{i}}{n}$
+\end{enumerate}
+\end{center}
 
-We have 4 shift operations, therefore we have $R_{0}$ to $R_{3}$ \\
-0 Shift: $r_{0} = 2^{4} = 16$ : 2 characters for 4 positions \\
-1 Shift: $r_{1} = 2$ : $|A|A|A|A|$ or $|B|B|B|B|$ \\
-2 Shifts: $r_{2} = 4$ : $|A|A|A|A|$ , $|B|B|B|B|$, $|A|B|A|B|$ or $|B|A|B|A|$ \\
-3 Shifts: $r_{3} = 2$ : The same as for $r_{1}$ \\
+We have 4 shift operations, therefore we have the operations $R_{0}$ to $R_{3}$ \\
+$R_0$ - 0 Shifts: $r_{0} = 2^{4} = 16$ : 2 characters for 4 positions \\
+$R_1$ - 1 Shift: $r_{1} = 2$ : \st{A}{A}{A}{A} or \st{B}{B}{B}{B} \\
+$R_2$ - 2 Shifts: $r_{2} = 4$ : \st{A}{A}{A}{A} , \st{B}{B}{B}{B}, \st{A}{B}{A}{B} or \st{B}{A}{B}{A} \\
+$R_3$ - 3 Shifts: $r_{3} = 2$ : The same as for $r_{1}$
+
+\raisebox{2.5\height}{$r_1$ follows the following pattern:} \includegraphics[scale=0.6,trim=140 585 345 130, clip]{img/group_XXXX} \raisebox{2.5\height}{and $r_2$:} \includegraphics[scale=0.6,trim=140 585 345 130, clip]{img/group_XYXY} \\
+X and Y are used to symbolize the boundaries between different groups. \\
 
 number of orbits = $ \frac{16+2+4+2}{4}$ = $ \frac{24}{4} $ = \textbf{6}
 
-But how? - write down the 16 possibilities ($R_{0}$) and group them in groups of the same meanings.
-That means that the string is basically the same but shifted. \\
+But how? - write down the 16 possibilities ($R_{0}$) and group them into their orbits.
+That means that groups are formed by strings that are basically the same but shifted. \\
 
 \colorbox{yellow}{AAAA} ... Yellow is Orbit 1\\
 \colorbox{red}{AAAB} ... Red is Orbit 2\\
@@ -573,12 +595,14 @@ That means that the string is basically the same but shifted. \\
 There we can clearly see the 6 different orbits.
 
 \subsubsection{Strings (2)}
-This is the same example as Example String (1), but with 3 characters ${A,B,C}$ \\
+This is the same example as the previous one, but with the character-set $\{A,B,C\}$ \\
 $r_{0} = 3^{4} = 81$, which determines all possible ways the characters can be set \\
 $r_{1} = r_{3} = 3$, which determines the 3 ways you can set the characters when shifting by 1 or 3
-characters and the meaning stays the same. Those are: $|A|A|A|A|$, $|B|B|B|B|$ and $|C|C|C|C|$ \\
+characters and the meaning stays the same.
+
+Those are: \st{A}{A}{A}{A}, \st{B}{B}{B}{B} and \st{C}{C}{C}{C} \\
 $r_{2} = 9$. The basic idea behind this is that you can shift 2 times when a string consist of only 1 character
-like $|A|A|A|A|$ or has the form $|X|Y|X|Y|$ or $|Y|X|Y|X|$. With 3 available characters we get those 9 ways.\\
+like \st{A}{A}{A}{A} or has the form \st{X}{Y}{X}{Y} or \st{Y}{X}{Y}{X}. With 3 available characters we get those 9 ways.\\
 
 This gives us the number of orbits: $\frac{96}{4} = 24$
 
@@ -594,7 +618,7 @@ We know when every character has to be there 1 time, one character has to be the
 So we have 3 characters that can be chosen twice.\\
 Then we have 2 characters left from the 4 character long string. \\
 At the end we have 2 possibly ways to fill the 2 characters which are left. For example:
-$|B|A|C|A|$ and  $|C|A|B|A|$ \\
+\st{B}{A}{C}{A} and \st{C}{A}{B}{A} \\
 
 Therefore we get $3 \times\begin{pmatrix}4\\2\end{pmatrix}\times 2$ \\
 $\begin{pmatrix}4\\2\end{pmatrix} = 6$ so we have $3 \times 6 \times 2 = 36$\\
