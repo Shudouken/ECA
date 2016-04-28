@@ -607,7 +607,7 @@ like \st{A}{A}{A}{A} or has the form \st{X}{Y}{X}{Y} or \st{Y}{X}{Y}{X}. With 3 
 This gives us the number of orbits: $\frac{96}{4} = 24$
 
 \subsubsection{Strings (3)}
-This is the same example as Example String (2), but you have to use every character atleast once.
+This is the same example as example String (2), but you have to use every character atleast once. \\
 $r_{0} = 36$\\
 $r_{1} = 0$\\
 $r_{2} = 0$\\
@@ -653,5 +653,56 @@ $r_7 = 2^{3 \text{ groups}} = 8$
 	\text{(a) }& \frac{16+2+4+2}{4} = \frac{24}{4} = 6 \\
 	\text{(b) }& \frac{16+2+4+2+4+4+8+8}{8} = \frac{48}{8} = 6
 }
+
+\subsubsection{Grids (5)}
+
+The same as Grids (4) but this time with 3 colors. In addition give an answer for (c) the number of orbits if we only allow reflection.
+
+\begin{center}
+\begin{tabular}{l l}
+$r_0 = 3^4 = 81$ : 3 colors on 4 unit-squares. & \qquad $r_4 = 3^{2} = 9$ \\
+$r_1 = 3$ & \qquad $r_5 = 3^{2} = 9$ \\
+$r_2 = 3^2 = 9$ & \qquad $r_6 = 3^{3} = 27$ \\
+$r_3 \sim r_1 = 3$ & \qquad $r_7 = 3^{3} = 27$
+\end{tabular}
+\end{center}
+
+\eq{
+	\text{(a) }& \frac{81+3+9+3}{4} = \frac{96}{4} = 24 \\
+	\text{(b) }& \frac{81+3+9+3+9+9+27+27}{8} = \frac{168}{8} = 21 \\
+	\text{(c) }& \frac{9+9+27+27}{4} = \frac{72}{4} = 18
+}
+
+Something peculiar happened in (c): The number of orbits should be higher than in (b) because when we allow more operations, more orbits can fall together!
+
+What went wrong? We forgot to include the identity element! If we add it back in we get the following:
+
+\eq{\frac{72+81}{5} = \frac{153}{5} = 30.6}
+
+%TODO maybe elaborate a little better and show that 180° and 270° rotations are missing
+
+That does not look better, we forgot to check more of the group axioms! The more time is spent fixing question (c), the more it turns to question (b). Always make sure that all of the conditions are fulfilled!
+
+\subsubsection{Grids (6)}
+
+Consider a 3x3 grid as shown below. Color the unit squares with up to 2 different colors. How many {\bf different} colorings exist, if we allow (a) rotation (b) rotation and reflection?
+
+\imgnc{block_3x3}{trim=140 580 370 120, clip}
+
+\begin{center}
+\begin{tabular}{l l}
+$r_0 = 2^9 = 512$ & \qquad $r_4 = 2^{6} = 64$ \\
+$r_1 = 2^3 = 8$ & \qquad $r_5 = 2^{6} = 64$ \\
+$r_2 = 2^5 = 32$ & \qquad $r_6 = 2^{6} = 64$ \\
+$r_3 \sim r_1 = 8$ & \qquad $r_7 = 2^{6} = 64$
+\end{tabular}
+\end{center}
+
+\eq{
+	\text{(a) }& \frac{512+8+32+8}{4} = \frac{560}{4} = 140 \\
+	\text{(b) }& \frac{560+64+64+64+64}{8} = \frac{816}{8} = 102
+}
+
+\img{block_3x3_groups}{trim=140 400 235 120, clip}{Grouping for all relevant cases for a 3x3 grid with up to 2 different colors. $r_4$ and $r_5$ as well as $r_6$ and $r_7$ do not look exactly identical when grouped but the concept is similar, just using a different axis.}
 
 \end{document}
