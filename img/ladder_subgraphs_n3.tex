@@ -1,0 +1,146 @@
+\documentclass{article}
+\usepackage{tkz-graph}
+\usepackage{paralist}
+\pagestyle{empty}
+\usetikzlibrary{patterns}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+\draw (0,-15.5) -- (0,-15.5) node[anchor=south, scale=1.33] {Removing 2 spokes:};
+
+\draw[thick,-] ( 3,-14) -- ( 4,-14);
+\draw[thick,-] ( 3,-14) -- ( 3,-15);
+\draw[thick,-] ( 4,-14) -- ( 4,-15);
+%\draw[thick,-] ( 3,-15) -- ( 4,-15);
+
+\draw[thick,-] ( 3,-15) -- ( 3,-16);
+\draw[thick,-] ( 4,-15) -- ( 4,-16);
+%\draw[thick,-] ( 3,-16) -- ( 4,-16);
+
+\filldraw[fill=white, draw=black] ( 3,-14) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 4,-14) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 3,-15) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 4,-15) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 3,-16) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 4,-16) circle (0.1cm);
+
+%\draw[thick,-] ( 5,-14) -- ( 6,-14);
+\draw[thick,-] ( 5,-14) -- ( 5,-15);
+\draw[thick,-] ( 6,-14) -- ( 6,-15);
+\draw[thick,-] ( 5,-15) -- ( 6,-15);
+
+\draw[thick,-] ( 5,-15) -- ( 5,-16);
+\draw[thick,-] ( 6,-15) -- ( 6,-16);
+%\draw[thick,-] ( 5,-16) -- ( 6,-16);
+
+\filldraw[fill=white, draw=black] ( 5,-14) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 6,-14) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 5,-15) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 6,-15) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 5,-16) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 6,-16) circle (0.1cm);
+
+%\draw[thick,-] ( 7,-14) -- ( 8,-14);
+\draw[thick,-] ( 7,-14) -- ( 7,-15);
+\draw[thick,-] ( 8,-14) -- ( 8,-15);
+%\draw[thick,-] ( 7,-15) -- ( 8,-15);
+
+\draw[thick,-] ( 7,-15) -- ( 7,-16);
+\draw[thick,-] ( 8,-15) -- ( 8,-16);
+\draw[thick,-] ( 7,-16) -- ( 8,-16);
+
+\filldraw[fill=white, draw=black] ( 7,-14) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 8,-14) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 7,-15) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 8,-15) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 7,-16) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 8,-16) circle (0.1cm);
+
+\draw (9,-15) -- (9,-15) node[anchor=west, scale=1.33] {= 3x};
+
+\draw (0,-18.5) -- (0,-18.5) node[anchor=south, scale=1.33] {Removing 1 spoke:};
+
+%\draw[thick,-] ( 3,-17) -- ( 4,-17);
+\draw[thick,-] ( 3,-17) -- ( 3,-18);
+\draw[thick,-] ( 4,-17) -- ( 4,-18);
+\draw[thick,-] ( 3,-18) -- ( 4,-18);
+
+\draw[thick,-] ( 3,-18) -- ( 3,-19);
+\draw[thick,-] ( 4,-18) -- ( 4,-19);
+\draw[thick,-] ( 3,-19) -- ( 4,-19);
+
+\filldraw[fill=white, draw=black] ( 3,-17) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 4,-17) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 3,-18) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 4,-18) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 3,-19) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 4,-19) circle (0.1cm);
+
+\draw (3.5,-20) -- (3.5,-20) node[anchor=south, scale=1.33] {2x};
+
+\draw[thick,-] ( 5,-17) -- ( 6,-17);
+\draw[thick,-] ( 5,-17) -- ( 5,-18);
+\draw[thick,-] ( 6,-17) -- ( 6,-18);
+%\draw[thick,-] ( 5,-18) -- ( 6,-18);
+
+\draw[thick,-] ( 5,-18) -- ( 5,-19);
+\draw[thick,-] ( 6,-18) -- ( 6,-19);
+\draw[thick,-] ( 5,-19) -- ( 6,-19);
+
+\filldraw[fill=white, draw=black] ( 5,-17) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 6,-17) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 5,-18) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 6,-18) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 5,-19) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 6,-19) circle (0.1cm);
+
+\draw (5.5,-20) -- (5.5,-20) node[anchor=south, scale=1.33] {4x};
+
+\draw[thick,-] ( 7,-17) -- ( 8,-17);
+\draw[thick,-] ( 7,-17) -- ( 7,-18);
+\draw[thick,-] ( 8,-17) -- ( 8,-18);
+\draw[thick,-] ( 7,-18) -- ( 8,-18);
+
+\draw[thick,-] ( 7,-18) -- ( 7,-19);
+\draw[thick,-] ( 8,-18) -- ( 8,-19);
+%\draw[thick,-] ( 7,-19) -- ( 8,-19);
+
+\filldraw[fill=white, draw=black] ( 7,-17) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 8,-17) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 7,-18) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 8,-18) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 7,-19) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 8,-19) circle (0.1cm);
+
+\draw (7.5,-20) -- (7.5,-20) node[anchor=south, scale=1.33] {2x};
+
+\draw (9,-18) -- (9,-18) node[anchor=west, scale=1.33] {= 8x};
+
+\draw (0,-22.5) -- (0,-22.5) node[anchor=south, scale=1.33] {Removing 0 spokes:};
+
+\draw[thick,-] ( 3,-21) -- ( 4,-21);
+\draw[thick,-] ( 3,-21) -- ( 3,-22);
+\draw[thick,-] ( 4,-21) -- ( 4,-22);
+\draw[thick,-] ( 3,-22) -- ( 4,-22);
+
+\draw[thick,-] ( 3,-22) -- ( 3,-23);
+\draw[thick,-] ( 4,-22) -- ( 4,-23);
+\draw[thick,-] ( 3,-23) -- ( 4,-23);
+
+\filldraw[fill=white, draw=black] ( 3,-21) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 4,-21) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 3,-22) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 4,-22) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 3,-23) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 4,-23) circle (0.1cm);
+
+\draw (4,-21.5) -- (4,-21.5) node[anchor=west, scale=1.33] {2x};
+\draw (4,-22.5) -- (4,-22.5) node[anchor=west, scale=1.33] {2x};
+
+\draw (5,-22) -- (5,-22) node[anchor=west, scale=1.33] {= 4x};
+
+\end{tikzpicture}
+
+\end{document}
