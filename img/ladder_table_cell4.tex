@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{tkz-graph}
+\usepackage{paralist}
+\pagestyle{empty}
+\usetikzlibrary{patterns}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+\draw[thick,dashed] ( 0, 0) -- ( 0,-1);
+\draw[thick,dashed] (0.25, 0) -- (0.25,-1);
+
+\draw[thick,-] ( 0.5, 0) -- ( 1, 0);
+\draw[thick,-] ( 0.5,-1) -- ( 1,-1);
+
+\filldraw[draw=red, thick] ( 1, 0) -- (2, 0);
+\filldraw[draw=red, thick] ( 1,-1) -- (2,-1);
+
+\filldraw[fill=white, draw=black] ( 1, 0) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 1,-1) circle (0.1cm);
+
+\filldraw[fill=white, draw=red] ( 2, 0) circle (0.1cm);
+\filldraw[fill=white, draw=red] ( 2,-1) circle (0.1cm);
+
+\draw (1,-2) -- (1,-2) node[anchor=south, scale=1.33] {1x};
+
+\end{tikzpicture}
+
+\end{document}

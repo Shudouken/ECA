@@ -416,15 +416,14 @@ How many spanning trees does a ladder of size $n=4$ contain as subgraphs? How ca
 }
 
 We can then build the following table:
-%TODO make and insert graphics into table
+
 \begin{center}
 \begin{tabular}{c | c | c}
-  \multicolumn{3}{r}{start with \quad \quad}\\
-  $n \rightarrow n+1$ & $X_A (n)$ & $X_B (n)$ \\
+  $n \rightarrow n+1$ & start with $X_A (n)$ & start with $X_B (n)$ \\
   \hline
-  \multirow{1}{*}{$X_A (n+1)$} &   \\
+  \raisebox{3.7\height}{$X_A (n+1)$} &  \includegraphics[trim=130 600 220 110,clip]{img/ladder_table_cell1} & \includegraphics[trim=130 600 380 110,clip]{img/ladder_table_cell2} \\
   \hline
-  \multirow{1}{*}{$X_B (n+1)$} &
+  \raisebox{3.7\height}{$X_B (n+1)$} & \includegraphics[trim=130 600 300 110,clip]{img/ladder_table_cell3} & \includegraphics[trim=130 600 380 110,clip]{img/ladder_table_cell4}
 \end{tabular}
 \end{center}
 
