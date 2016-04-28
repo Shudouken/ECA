@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{tkz-graph}
+\usepackage{paralist}
+\pagestyle{empty}
+\usetikzlibrary{patterns}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+\draw[thick,-] ( 0, 0) -- ( 0, 2);
+\draw[thick,-] ( 2, 0) -- ( 2, 2);
+
+\draw[thick,-] ( 0, 0) -- ( 2, 0);
+\draw[thick,-] ( 0, 0) -- ( 0,-2);
+\draw[thick,-] ( 2, 0) -- ( 2,-2);
+\draw[thick,-] ( 0,-2) -- ( 2,-2);
+
+\draw[thick,-] ( 0,-2) -- ( 2,-2);
+\draw[thick,-] ( 0,-2) -- ( 0,-4);
+\draw[thick,-] ( 2,-2) -- ( 2,-4);
+\draw[thick,-] ( 0,-4) -- ( 2,-4);
+
+\draw[thick,-] ( 0,-4) -- ( 0,-6);
+\draw[thick,-] ( 2,-4) -- ( 2,-6);
+
+\draw[thick,<-] (1,-0.1) arc (75:0:3cm);
+\draw (3.3,-3.6) -- (3.3,-3.6) node[anchor=south, scale=1.33] {spoke};
+
+\filldraw[fill=white, draw=black] ( 0, 0) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 2, 0) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 0, 2) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 2, 2) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 0,-2) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 2,-2) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 0,-4) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 2,-4) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 0,-6) circle (0.1cm);
+\filldraw[fill=white, draw=black] ( 2,-6) circle (0.1cm);
+
+\end{tikzpicture}
+
+\end{document}
