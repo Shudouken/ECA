@@ -625,5 +625,33 @@ $\begin{pmatrix}4\\2\end{pmatrix} = 6$ so we have $3 \times 6 \times 2 = 36$\\
 
 This gives us the number of orbits: $\frac{36+0+0+0}{4} = 4$
 
+\subsubsection{Grids (4)}
+
+Consider a 2x2 grid as shown below. Color the unit squares with up to 2 different colors. How many {\bf different} colorings exist, if we allow (a) rotation (b) rotation and reflection?
+
+\imgnc{block_2x2}{trim=140 610 400 120, clip}
+
+\img{block_2x2_rot}{scale=1.1,trim=140 350 335 125, clip}{$R_0$ to $R_3$, rotation by 0, 90, 180 or 270 degrees.}
+
+$r_0 = 2^4 = 16$ : 2 colors on 4 unit-squares. \\
+$r_1 = 2$ : all red or all blue. \\
+$r_2 = 2^2 = 4$ : $r_1$ + diagonals \\
+$r_3 \sim r_1 = 2$
+
+\img{block_2x2_groups_rot}{trim=140 530 245 130, clip}{Grouping for $r_1$ and $r_2$ in regards to rotation.}
+
+We still need to take a look at $R_4$ to $R_7$, our operations concerning reflection. We allow horizontal and vertical reflection as well as reflection on either diagonal axis.
+
+\img{block_2x2_groups_ref}{trim=140 440 235 120, clip}{Grouping for $r_4$ to $r_7$ in regards to reflection.}
+
+$r_4 = 2^{2 \text{ groups}} = 4$ \\
+$r_5 = 2^{2 \text{ groups}} = 4$ \\
+$r_6 = 2^{3 \text{ groups}} = 8$ \\
+$r_7 = 2^{3 \text{ groups}} = 8$
+
+\eq{
+	\text{(a) }& \frac{16+2+4+2}{4} = \frac{24}{4} = 6 \\
+	\text{(b) }& \frac{16+2+4+2+4+4+8+8}{8} = \frac{48}{8} = 6
+}
 
 \end{document}
