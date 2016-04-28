@@ -55,6 +55,14 @@
 \end{figure}
 }
 
+\newcommand{\imgnc}[2]{
+\begin{figure}[H]
+	\centering
+	\includegraphics[#2]{img/#1}
+	\captionsetup{width=0.8\textwidth, justification=centering}
+\end{figure}
+}
+
 \newcommand{\fig}[2]{
 \begin{figure}[H]
 	\centering
@@ -380,5 +388,11 @@ In the last line, we made preparations to ensure that no double count occurs.
 \img{ladder_spoke}
     {scale=1, trim=200 420 450 120}
     {Depiction of a ladder as a connected, cycle-free spanning tree. A ladder of size $n$ 		has $n$ spokes.}
+    
+How many spanning trees does a ladder of size $n$ contain as subgraphs (with the same vertex set)?
+
+\imgnc{ladder_subgraphs}{scale=1, trim=100 425 100 120, clip}
+
+\imgnc{ladder_subgraphs}{scale=1, trim=100 255 100 370, clip}
 
 \end{document}
