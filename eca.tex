@@ -55,6 +55,14 @@
 \end{figure}
 }
 
+\newcommand{\imgnc}[2]{
+\begin{figure}[H]
+	\centering
+	\includegraphics[#2]{img/#1}
+	\captionsetup{width=0.8\textwidth, justification=centering}
+\end{figure}
+}
+
 \newcommand{\fig}[2]{
 \begin{figure}[H]
 	\centering
@@ -70,6 +78,12 @@
 #1
 \end{aligned}
 \end{equation*}
+}
+
+\newcommand{\mat}[1]{
+\begin{pmatrix}
+#1
+\end{pmatrix}
 }
 
 \newcommand{\newsection}[1]{
@@ -380,6 +394,83 @@ In the last line, we made preparations to ensure that no double count occurs.
 \img{ladder_spoke}
     {scale=1, trim=200 420 450 120}
     {Depiction of a ladder as a connected, cycle-free spanning tree. A ladder of size $n$ 		has $n$ spokes.}
+    
+How many spanning trees does a ladder of size $n$ contain as subgraphs (with the same vertex set)?
+
+\imgnc{ladder_subgraphs}{scale=1, trim=100 425 100 120, clip}
+
+\imgnc{ladder_subgraphs}{scale=1, trim=100 275 100 370, clip}
+
+\imgnc{ladder_subgraphs_n3}{scale=1, trim=100 400 100 125, clip}
+
+For the total number of subgraphs with a ladder of size $n=3$ we can calculate \\ $3+8+4=15$ 
+
+How many spanning trees does a ladder of size $n=4$ contain as subgraphs? How can we find a formula for this problem? We need to make some definitions!
+
+\eq{
+	X_A (n) \dots \# &\text{ of spanning trees in a ladder of size } n \\
+	X_B (n) \dots \# &\text{ of spanning graphs which consist of \underline{2} components} \\
+					 &\text{ and are cycle free for a ladder of size } n \text{ such that} \\
+					 &\text{ the rightmost 2 vertices are in \underline{different}} \\
+					 &\text{ components.}
+}
+
+We can then build the following table:
+%TODO make and insert graphics into table
+\begin{center}
+\begin{tabular}{c | c | c}
+  \multicolumn{3}{r}{start with \quad \quad}\\
+  $n \rightarrow n+1$ & $X_A (n)$ & $X_B (n)$ \\
+  \hline
+  \multirow{1}{*}{$X_A (n+1)$} &   \\
+  \hline
+  \multirow{1}{*}{$X_B (n+1)$} &
+\end{tabular}
+\end{center}
+
+We can translate this into a matrix.
+
+\eq{
+	X_A (1) = 1 \\
+	X_B (1) = 1
+}
+
+\eq{
+	\mat{X_A (n+1) \\ X_B (n+1)} = \mat{3&1 \\ 2&1} \mat{X_A (n) \\ X_B (n)} = \mat{3&1 \\ 2&1}^n \mat{1 \\ 1}
+}
+
+\eq{\text{for n: } \mat{3&1 \\ 2&1}^{n-1} \mat{1 \\ 1}}
+
+However, we are only interested in $X_A(n)$ and want to get $X_B(n)$ out of the equation.
+
+\eq{
+	X_A(n+1) &= 3X_A(n) + X_B(n) \rightarrow X_B(n) = X_A(n+1) - 3X_A(n) \\
+	X_B(n+1) &= 2X_A(n) + X_B(n) \rightarrow \underline{X_B(n)} = 2X_A(n-1) + X_B(n-1) \\
+	&\rightarrow 2X_A(n-1) + X_A(n) - 3X_A(n-1) \\
+	&= \underline{X_A(n) - X_A(n-1)} \\
+	\\
+	X_A(n+1) &= 3X_A(n) + X_A(n) - X_A(n-1) = \underline{4X_A(n) - X_A(n-1)}
+}
+
+With this recursive formula we can solve the problem easily.
+
+\eq{
+	&X_A(1) = 1 \\
+	&\underline{X_A(2) = 4} \\
+	&X_A(3) = 4 \cdot 4 -1 = 15 \\
+	&X_A(4) = 4 \cdot 15 - 4 = 56 \\
+	&\qquad \vdots
+}
+
+But, as the formula has a recursion we always need to know the last two elements. We can use linear algebra or aspects of generating functions to get rid of this recursion!
+
+\fig{
+	\eq{
+		X_A(n) = \frac{1}{2 \cdot \sqrt{3}} \, (2+\sqrt{3})^n - \frac{1}{2 \cdot \sqrt{3}} \, (2-\sqrt{3})^n
+	}
+}{Non-recursive formula for the number of spanning trees a ladder of size $n$ contain as subgraphs}
+
+The Asymptotics are: $\Theta((\underbrace{2+\sqrt{3}}_{3,73})^n)$
 
 \newsection{Polya-Redfield Enumeration Theorem
 aka Burnside's Lemma}
