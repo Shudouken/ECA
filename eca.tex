@@ -259,8 +259,8 @@ To solve this problem we have to think of appropriate labels for the boxes.
 \begin{center}
 \begin{tabular}{l  l}
   $\{1,2n\}$ & \rdelim\}{5}{1mm}[ $n$ boxes]\\
-  $\{2,2n-2\}$ & \\
-  $\{3,2n-3\}$ & \\
+  $\{2,2n-1\}$ & \\
+  $\{3,2n-2\}$ & \\
   $\qquad\vdots$ & \\
   $\{n,n+1\}$ &  
 \end{tabular}
@@ -328,7 +328,7 @@ There are two cases to consider for the boxes.
 
 In both cases we have $n-1$ boxes for $n$ elements, meaning there always has to be a box with at least two elements.
 
-\subsection{Example 5: Numers II}
+\subsection{Example 5: Numbers II}
 
 Let $q$ be an odd number and let $S$ be the set $\{1,3,7,15,31, \cdots , 2^i-1\}$, i.e. $S$ contains the elements $a_i = 2^i-1$ for all $i \ge 1$.
 
@@ -343,14 +343,14 @@ Boxes for the rest:
   $\{r_i = 1\}$ & \\
   $\{r_i = 2\}$ & \\
   $\qquad \vdots$ & \\
-  $\{r_i = q-2\}$ &  
+  $\{r_i = q-1\}$ &  
 \end{tabular}
 
 We can ignore the case with at least one element in box $\{r_i = 0\}$, since it means we are done already. If we ignore that box, there have to be two boxes with the same rest.
 
 \eq{
 	 		& a_m = c^* \cdot q + r_m \\
-	- \quad & \underline{a_m = c^{**} \cdot q + r_m} \\
+	- \quad & \underline{a_n = c^{**} \cdot q + r_m} \\
 	 		& a_m - a_n = c^{***} \cdot q \qquad m > n \\
 	 		& a_m - a_n = 2^m-1-(2^n-1) = \\
 	 		& 2^m-2^n = 2^n\underbrace{(2^{m-n}-1)}_{a_{m-n}}
