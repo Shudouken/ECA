@@ -614,13 +614,12 @@ $r_{2} = 0$\\
 $r_{3} = 0$\\
 
 Why is $r_0$ 36?\\
-We know when every character has to be there 1 time, one character has to be there 2 times.\\
-So we have 3 characters that can be chosen twice.\\
-Then we have 2 characters left from the 4 character long string. \\
+We know that when every character has to be used at least once, one character has to be represented 2 times.\\
+We have a choice of 3 characters $\{A,B,C\}$ for these duplicates, which need to fit into 4 boxes. For one of these choices we end up with something like \st{\phantom{A}}{A}{\phantom{A}}{A} \\
 At the end we have 2 possible ways to fill the 2 characters which are left. For example:
 \st{B}{A}{C}{A} and \st{C}{A}{B}{A} \\
 
-Therefore we get $3 \times\begin{pmatrix}4\\2\end{pmatrix}\times 2$ \\
+Therefore we get $3 \times\mat{4\\2}\times 2$ \\
 $\begin{pmatrix}4\\2\end{pmatrix} = 6$ so we have $3 \times 6 \times 2 = 36$\\
 
 This gives us the number of orbits: $\frac{36+0+0+0}{4} = 9$
