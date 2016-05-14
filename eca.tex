@@ -704,4 +704,28 @@ $r_3 \sim r_1 = 8$ & \qquad $r_7 = 2^{6} = 64$
 
 \img{block_3x3_groups}{trim=140 400 235 120, clip}{Grouping for all relevant cases for a 3x3 grid with up to 2 different colors. $r_4$ and $r_5$ as well as $r_6$ and $r_7$ do not look exactly identical when grouped but the concept is similar, just using a different axis.}
 
+\subsubsection{Grids (7)}
+
+Consider a 3x3 grid. Color the unit squares with up to 3 different colors. How many {\bf different} colorings exist, if we allow (a) rotation (b) rotation and reflection?
+
+\begin{center}
+\begin{tabular}{l l}
+$r_0 = 3^9 = 19683$ & \qquad $r_4 = 3^{6} = 729$ \\
+$r_1 = 3^3 = 27$ & \qquad $r_5 = 3^{6} = 729$ \\
+$r_2 = 3^5 = 243$ & \qquad $r_6 = 3^{6} = 729$ \\
+$r_3 \sim r_1 = 27$ & \qquad $r_7 = 3^{6} = 729$
+\end{tabular}
+\end{center}
+
+\eq{
+	\text{(a) }& \frac{19683+27+243+27}{4} = \frac{19980}{4} = 4995 \\
+	\text{(b) }& \frac{19980+4\cdot729}{8} = \frac{22896}{8} = 2862
+}
+
+\newpage
+
+\subsubsection{Cube (8)}
+
+Color 6 faces of a cube in up to 2 colors. How many {\bf different} colorings exist, if we allow rotating the cube in 3D-space.
+
 \end{document}
