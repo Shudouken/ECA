@@ -215,7 +215,7 @@ Problem: $k >> n$
 	{scale=1, trim=275 505 360 125}
 	{Polynomios and their respective vector fingerprint.}
 	
-Compute all eight polyonimos (4x rotation \& 2x reflection) and take the lexicographical minimum of the vector form!
+Compute all eight polyominos (4x rotation \& 2x reflection) and take the lexicographical minimum of the vector form!
 
 Time for the fingerprint: $O(n)$
 
@@ -232,7 +232,7 @@ The number of polyominos goes to $\Theta(c^n)$ and we know that $4.00253 \le c \
 
 \newsection{Pigeonhole-Principle}
 
-Also known as Dirichlet principle, or in German $"$Schuhfach Prinzip$"$.
+Also known as Dirichlet principle, or in German $"$Schubfach Prinzip$"$.
 
 If you have $n+1$ elements (pigeons) which you put into $n$ boxes (pigeonholes), then there is a box with at least two elements (two pigeons).
 
@@ -369,7 +369,7 @@ For that we need to take a look at the prime coefficients of $45$ which consist 
 \eq{
 	X_i &= | \text{numbers of } \{1 \dots 45\} \text{ divisible by i} | \\
 	X_3 &= \frac{45}{3} = 15 \\
-	X_5 &= \frac{45}{15} = 9 \\
+	X_5 &= \frac{45}{5} = 9 \\
 	X_{3 \cdot 5} = X_{15} &= \frac{45}{15} = 3
 }
 
@@ -613,14 +613,13 @@ $r_{1} = 0$\\
 $r_{2} = 0$\\
 $r_{3} = 0$\\
 
-Why is it 36?\\
-We know when every character has to be there 1 time, one character has to be there 2 times.\\
-So we have 3 characters that can be chosen twice.\\
-Then we have 2 characters left from the 4 character long string. \\
-At the end we have 2 possibly ways to fill the 2 characters which are left. For example:
+Why is $r_0$ 36?\\
+We know that when every character has to be used at least once, one character has to be represented 2 times.\\
+We have a choice of 3 characters $\{A,B,C\}$ for these duplicates, which need to fit into 4 boxes. For one of these choices we end up with something like \st{\phantom{A}}{A}{\phantom{A}}{A} \\
+At the end we have 2 possible ways to fill the 2 characters which are left. For example:
 \st{B}{A}{C}{A} and \st{C}{A}{B}{A} \\
 
-Therefore we get $3 \times\begin{pmatrix}4\\2\end{pmatrix}\times 2$ \\
+Therefore we get $3 \times\mat{4\\2}\times 2$ \\
 $\begin{pmatrix}4\\2\end{pmatrix} = 6$ so we have $3 \times 6 \times 2 = 36$\\
 
 This gives us the number of orbits: $\frac{36+0+0+0}{4} = 9$
