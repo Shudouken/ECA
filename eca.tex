@@ -1,7 +1,7 @@
 \documentclass[12pt,onecolumn%,twoside
 ]{scrartcl}
 \usepackage[utf8]{inputenc}
-\usepackage[english,ngerman]{babel}
+\usepackage[ngerman,english]{babel}
 \usepackage[pdfusetitle]{hyperref}
 \usepackage{graphicx}
 \usepackage{calc}
@@ -205,7 +205,7 @@ With these operations polyominos can be classified into these two groups:
 
 What is the formula for generating \underline{all} n-polyominos? Look at a step from $n \to n+1$, we can add one unit square to all surfaces, in the absolute worst case (a straight polyomino) that means $2n+2$ possibilities. How can we best deal with duplicates?
 
-{\bf Approach 1}: Generate all new polyominos, then compare them all. For size $n+1$, $k$ polyominos are generated. $\Rightarrow O((_2^k) \cdot n) = O(k^2 \cdot n)$ 
+{\bf Approach 1}: Generate all new polyominos, then compare them all. For size $n+1$, $k$ polyominos are generated. $\Rightarrow \mathcal{O}((_2^k) \cdot n) = \mathcal{O}(k^2 \cdot n)$ 
 
 Problem: $k >> n$
 
@@ -217,12 +217,12 @@ Problem: $k >> n$
 	
 Compute all eight polyominos (4x rotation \& 2x reflection) and take the lexicographical minimum of the vector form!
 
-Time for the fingerprint: $O(n)$
-
-$\Rightarrow$ Compute fingerprints of all generated polyominos: $O(k \cdot n)$
-
-$\Rightarrow$ Sort all fingerprints: $O(k \cdot log(k) \cdot n)$, duplicates are neighboured in the sorting and removing takes $O(k \cdot n)$
-$\Rightarrow$ the total runtime is $O(k \cdot log(k) \cdot n)$
+Time for the fingerprint: $\mathcal{O}(n)$
+\begin{itemize}
+  \item[$\Rightarrow$] Compute fingerprints of all generated polyominos: $\mathcal{O}(k \cdot n)$
+  \item[$\Rightarrow$] Sort all fingerprints: $\mathcal{O}(k \cdot log(k) \cdot n)$, duplicates are neighboured in the sorting and removing takes $\mathcal{O}(k \cdot n)$
+  \item[$\Rightarrow$] the total runtime is $\mathcal{O}(k \cdot log(k) \cdot n)$
+\end{itemize}
 
 No formula is known for the number of fixed/free polyominos.
 
@@ -242,7 +242,7 @@ If you have $n+1$ elements (pigeons) which you put into $n$ boxes (pigeonholes),
 
 You have $n$ black socks and $m$ white socks in a drawer. How many socks do you have to pick out in order to get a matching pair?
 
-If you abstract the problem using the pigeonhole principle it leads to the following setup. In total there are $n+m$ elements that are distributed upon two boxes, one for white socks and one for black socks. If we pick a sock out of the drawer and put it into one of the two boxes, we have to repeat the process at least three times to have a box with two elements in them (a matching pair of socks).
+If you abstract the problem using the pigeonhole principle it leads to the following setup. In total there are $n+m$ elements that are distributed upon two boxes, one for white socks and one for black socks. If we pick a sock out of the drawer and put it into one of the two boxes, we have to repeat the process at most three times to have a box with two elements in it (a matching pair of socks).
 
 For $n=2$ boxes there have to be $n+1=3$ elements, such that one of the boxes contains at least $\ceil*{\frac{3}{2}} = 2$ elements.
 
@@ -350,7 +350,7 @@ We can ignore the case with at least one element in box $\{r_i = 0\}$, since it 
 
 \eq{
 	 		& a_m = c^* \cdot q + r_m \\
-	- \quad & \underline{a_m = c^{**} \cdot q + r_m} \\
+	- \quad & \underline{a_n = c^{**} \cdot q + r_m} \\
 	 		& a_m - a_n = c^{***} \cdot q \qquad m > n \\
 	 		& a_m - a_n = 2^m-1-(2^n-1) = \\
 	 		& 2^m-2^n = 2^n\underbrace{(2^{m-n}-1)}_{a_{m-n}}
